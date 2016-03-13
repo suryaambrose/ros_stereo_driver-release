@@ -1,0 +1,15 @@
+ros-indigo-stereo-driver (0.0.2-0saucy) saucy; urgency=high
+
+  * Fix package description and project path in README
+  * [README] Getting started
+  * [README] Dependencies and setup instructions
+  * Handle stereo camera with stacked left/right images
+  * Handle stereo camera with interlaced left/right images
+  * [README] Skeleton
+  * Add CMakeLists.txt
+  * Initial commit
+  * Contributors: Surya Ambrose
+
+ -- Surya Ambrose <surya.ambrose@gmail.com>  Sat, 12 Mar 2016 23:00:00 -0000
+
+

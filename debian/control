@@ -1,0 +1,12 @@
+Source: ros-indigo-stereo-driver
+Section: misc
+Priority: extra
+Maintainer: Surya Ambrose <surya.ambrose@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), ros-indigo-camera-info-manager, ros-indigo-catkin, ros-indigo-cv-bridge, ros-indigo-dynamic-reconfigure, ros-indigo-image-transport, ros-indigo-nodelet, ros-indigo-roscpp, ros-indigo-sensor-msgs
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-indigo-stereo-driver
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-indigo-camera-info-manager, ros-indigo-cv-bridge, ros-indigo-dynamic-reconfigure, ros-indigo-image-transport, ros-indigo-nodelet, ros-indigo-roscpp, ros-indigo-sensor-msgs
+Description: Package to grab the images from a stereo camera
