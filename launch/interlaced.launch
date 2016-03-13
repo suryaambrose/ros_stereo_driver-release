@@ -1,0 +1,35 @@
+
+<launch>
+  <arg name="width"/>
+  <arg name="height"/>
+  <arg name="DEVICE"/>
+  <arg name="FPS"/>
+  <arg name="camera_info_file_right" default="" />
+  <arg name="camera_info_file_left" default="" />
+  <arg name="camera_info_url_default" default="" />
+
+
+  <arg name="manager" default="manager" /> <!-- Must be globally qualified -->
+  <arg name="camera_info_url_right" default="file://$(arg camera_info_file_right)" />
+  <arg name="camera_info_url_left" default="file://$(arg camera_info_file_left)" />
+
+  <node pkg="nodelet" type="nodelet" name="$(arg manager)" args="manager" output="screen" />
+
+  <!-- This launchfile should bring up a node that broadcasts a ros image transport on /camera/image_raw -->
+  <node name="gscam_driver" pkg="nodelet" type="nodelet" args="load gscam/GSCamNodelet $(arg manager)"
+        output="screen">
+    <param name="camera_name" value="default"/>
+    <param name="gscam_config" value="v4l2src device=$(arg DEVICE) ! video/x-raw-yuv,framerate=$(arg FPS),width=$(arg width),height=$(arg height)"/>
+    <param name="frame_id" value="/CameraDepth_optical_frame"/>
+    <param name="sync_sink" value="true"/>
+    <param name="camera_info_url" value="$(arg camera_info_url_default)" />
+    <param name="image_encoding" value="yuv422" />
+  </node>
+
+  <node pkg="stereo_driver" type="deinterlacer" name="deinterlacer" >
+    <param name="camera_left_info_url" value="$(arg camera_info_url_left)" />
+    <param name="camera_right_info_url" value="$(arg camera_info_url_right)" />
+  </node>
+
+
+</launch>

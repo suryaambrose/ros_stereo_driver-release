@@ -1,0 +1,22 @@
+<launch>
+  <!-- Use stacked.launch or interlaced.launch depending of your camera model -->
+  <include file="$(find stereo_driver)/launch/stacked.launch" >
+    <arg name="camera_info_file_right" default="$(find stereo_driver)/camera_info/right.yaml" />
+    <arg name="camera_info_file_left" default="$(find stereo_driver)/camera_info/left.yaml" />
+    <arg name="camera_info_url_default" default="" />
+    <arg name="DEVICE" default="$(arg DEVICE)"/>
+
+    <!-- Fill in here the configuration for your camera -->
+    <arg name="FPS" default="30/1"/>
+    <arg name="width" default="2560"/>
+    <arg name="height" default="720"/>
+
+    <!-- STACK ONLY -->
+    <!-- Detail how the two images should be splitted -->
+    <!-- Vertical offset is currently not supported, it is assumed images start at row 0 -->
+    <arg name="left_offset" default="0"/>
+    <arg name="left_width" default="1280"/>
+    <arg name="right_offset" default="1280"/>
+    <arg name="right_width" default="1280"/>
+  </include>
+</launch>
